@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :charities
   resources :individuals
   root 'welcome#index'
 
