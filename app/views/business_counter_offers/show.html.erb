@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Business:</strong>
+  <%= @business_counter_offer.business %>
+</p>
+
+<p>
+  <strong>Charity offer:</strong>
+  <%= @business_counter_offer.charity_offer %>
+</p>
+
+<p>
+  <strong>Shortcode:</strong>
+  <%= @business_counter_offer.shortCode %>
+</p>
+
+<p>
+  <strong>Shortdescription:</strong>
+  <%= @business_counter_offer.shortDescription %>
+</p>
+
+<p>
+  <strong>Longdescription:</strong>
+  <%= @business_counter_offer.longDescription %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @business_counter_offer.amount %>
+</p>
+
+<%= link_to 'Edit', edit_business_counter_offer_path(@business_counter_offer) %> |
+<%= link_to 'Back', business_counter_offers_path %>

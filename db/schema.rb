@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220055745) do
+ActiveRecord::Schema.define(version: 20170220061402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "business_counter_offers", force: :cascade do |t|
+    t.integer  "business_id"
+    t.integer  "charity_offer_id"
+    t.string   "shortCode",        limit: 6
+    t.string   "shortDescription"
+    t.string   "longDescription"
+    t.decimal  "amount",                     precision: 8, scale: 2
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+  end
+
+  add_index "business_counter_offers", ["business_id"], name: "index_business_counter_offers_on_business_id", using: :btree
+  add_index "business_counter_offers", ["charity_offer_id"], name: "index_business_counter_offers_on_charity_offer_id", using: :btree
 
   create_table "businesses", force: :cascade do |t|
     t.string   "name"
@@ -60,5 +74,7 @@ ActiveRecord::Schema.define(version: 20170220055745) do
     t.datetime "updated_at",           null: false
   end
 
+  add_foreign_key "business_counter_offers", "businesses"
+  add_foreign_key "business_counter_offers", "charity_offers"
   add_foreign_key "charity_offers", "charities"
 end

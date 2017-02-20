@@ -1,0 +1,1 @@
+json.array! @business_counter_offers, partial: 'business_counter_offers/business_counter_offer', as: :business_counter_offer

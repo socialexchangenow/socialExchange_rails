@@ -1,0 +1,2 @@
+module BusinessCounterOffersHelper
+end
