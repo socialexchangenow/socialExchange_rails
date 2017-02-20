@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :commitments
   resources :business_counter_offers
   resources :charity_offers
   resources :businesses
