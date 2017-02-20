@@ -13,4 +13,5 @@
 #
 
 class Individual < ActiveRecord::Base
+  has_many :commitments
 end
