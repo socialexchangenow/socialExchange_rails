@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  charity_id: 
+  shortCode: MyString
+  shortDescription: MyString
+  longDescription: MyString
+  amount: 9.99
+
+two:
+  charity_id: 
+  shortCode: MyString
+  shortDescription: MyString
+  longDescription: MyString
+  amount: 9.99

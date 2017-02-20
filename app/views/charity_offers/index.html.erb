@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Charity Offers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Charity</th>
+      <th>Shortcode</th>
+      <th>Shortdescription</th>
+      <th>Longdescription</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @charity_offers.each do |charity_offer| %>
+      <tr>
+        <td><%= charity_offer.charity %></td>
+        <td><%= charity_offer.shortCode %></td>
+        <td><%= charity_offer.shortDescription %></td>
+        <td><%= charity_offer.longDescription %></td>
+        <td><%= charity_offer.amount %></td>
+        <td><%= link_to 'Show', charity_offer %></td>
+        <td><%= link_to 'Edit', edit_charity_offer_path(charity_offer) %></td>
+        <td><%= link_to 'Destroy', charity_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Charity offer', new_charity_offer_path %>

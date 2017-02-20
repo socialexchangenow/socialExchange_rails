@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220040112) do
+ActiveRecord::Schema.define(version: 20170220055745) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 20170220040112) do
     t.datetime "updated_at",                 null: false
   end
 
+  create_table "charity_offers", force: :cascade do |t|
+    t.integer  "charity_id"
+    t.string   "shortCode",        limit: 6
+    t.string   "shortDescription"
+    t.string   "longDescription"
+    t.decimal  "amount",                     precision: 8, scale: 2
+    t.datetime "created_at",                                         null: false
+    t.datetime "updated_at",                                         null: false
+  end
+
+  add_index "charity_offers", ["charity_id"], name: "index_charity_offers_on_charity_id", using: :btree
+
   create_table "individuals", force: :cascade do |t|
     t.string   "source",     limit: 3
     t.string   "sourceID"
@@ -48,4 +60,5 @@ ActiveRecord::Schema.define(version: 20170220040112) do
     t.datetime "updated_at",           null: false
   end
 
+  add_foreign_key "charity_offers", "charities"
 end

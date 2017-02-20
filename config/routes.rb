@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :charity_offers
   resources :businesses
   resources :charities
   resources :individuals

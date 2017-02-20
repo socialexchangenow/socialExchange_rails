@@ -1,0 +1,1 @@
+json.partial! "charity_offers/charity_offer", charity_offer: @charity_offer
