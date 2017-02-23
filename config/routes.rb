@@ -5,7 +5,10 @@ Rails.application.routes.draw do
   resources :businesses
   resources :charities
   resources :individuals
+
   root 'welcome#index'
+
+  match 'motionai/globalhook', to: 'motionai#globalhook', :via => [:post], as: 'motionai_globalhook'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
