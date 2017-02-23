@@ -8,7 +8,7 @@ class MotionaiController < ApplicationController
 
   def bootstraphook
     puts "motion.ai: bootstraphook: params=#{params.inspect}"
-    render json: { result: "member" }
+    render json: { hack: "done", userstatus: "member" }
   end
 
   def starthook
