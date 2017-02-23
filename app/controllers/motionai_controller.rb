@@ -3,7 +3,7 @@ class MotionaiController < ApplicationController
 
   def globalhook
     puts "motion.ai: GlobalHook: params=#{params.inspect}"
-    head :ok
+    render json: {}
   end
 
 end
