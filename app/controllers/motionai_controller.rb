@@ -3,17 +3,11 @@ class MotionaiController < ApplicationController
 
   def globalhook
     puts "motion.ai: globalhook: params=#{params.inspect}"
-    render json: {}
-  end
 
-  def bootstraphook
-    puts "motion.ai: bootstraphook: params=#{params.inspect}"
-    render json: { hack: "done", userstatus: "member" }
-  end
+    render json: {} and return if params[ "moduleNickname" ] != "Start" || 
+      params[ "direction" ] != "in" 
 
-  def starthook
-    puts "motion.ai: starthook: params=#{params.inspect}"
-    render json: {}
+    render json: { userStatus: "member" }
   end
 
 end
