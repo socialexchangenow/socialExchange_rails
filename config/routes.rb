@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   match 'motionai/globalhook', to: 'motionai#globalhook', :via => [:post], as: 'motionai_globalhook'
   match 'motionai/starthook', to: 'motionai#starthook', :via => [:post], as: 'motionai_starthook'
+  match 'motionai/bootstraphook', to: 'motionai#bootstraphook', :via => [:post], as: 'motionai_bootstraphook'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

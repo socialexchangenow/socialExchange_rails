@@ -6,6 +6,11 @@ class MotionaiController < ApplicationController
     render json: {}
   end
 
+  def bootstraphook
+    puts "motion.ai: bootstraphook: params=#{params.inspect}"
+    render json: { result: "member" }
+  end
+
   def starthook
     puts "motion.ai: starthook: params=#{params.inspect}"
     render json: {}
