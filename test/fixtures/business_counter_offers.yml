@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: business_counter_offers
+#
+#  id               :integer          not null, primary key
+#  business_id      :integer
+#  charity_offer_id :integer
+#  shortCode        :string(6)
+#  shortDescription :string
+#  longDescription  :string
+#  amount           :decimal(8, 2)
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  business_id: 
+  charity_offer_id: 
+  shortCode: MyString
+  shortDescription: MyString
+  longDescription: MyString
+  amount: 9.99
+
+two:
+  business_id: 
+  charity_offer_id: 
+  shortCode: MyString
+  shortDescription: MyString
+  longDescription: MyString
+  amount: 9.99

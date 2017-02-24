@@ -1,0 +1,1 @@
+json.array! @charity_offers, partial: 'charity_offers/charity_offer', as: :charity_offer

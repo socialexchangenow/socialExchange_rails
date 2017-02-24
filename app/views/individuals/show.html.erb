@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @individual.source %>
+</p>
+
+<p>
+  <strong>Sourceid:</strong>
+  <%= @individual.sourceID %>
+</p>
+
+<p>
+  <strong>Firstname:</strong>
+  <%= @individual.firstName %>
+</p>
+
+<p>
+  <strong>Lastname:</strong>
+  <%= @individual.lastName %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @individual.email %>
+</p>
+
+<%= link_to 'Edit', edit_individual_path(@individual) %> |
+<%= link_to 'Back', individuals_path %>

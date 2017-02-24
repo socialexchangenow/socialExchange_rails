@@ -1,0 +1,41 @@
+<%= form_for(@commitment) do |f| %>
+  <% if @commitment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@commitment.errors.count, "error") %> prohibited this commitment from being saved:</h2>
+
+      <ul>
+      <% @commitment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :individual_id %><br>
+    <%= f.text_field :individual_id %>
+  </div>
+  <div class="field">
+    <%= f.label :charity_offer_id %><br>
+    <%= f.text_field :charity_offer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :business_counter_offer_id %><br>
+    <%= f.text_field :business_counter_offer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :expectedDate %><br>
+    <%= f.datetime_select :expectedDate %>
+  </div>
+  <div class="field">
+    <%= f.label :fulfilled %><br>
+    <%= f.check_box :fulfilled %>
+  </div>
+  <div class="field">
+    <%= f.label :fulfilledDate %><br>
+    <%= f.datetime_select :fulfilledDate %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

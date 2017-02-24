@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Commitments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Individual</th>
+      <th>Charity offer</th>
+      <th>Business counter offer</th>
+      <th>Expecteddate</th>
+      <th>Fulfilled</th>
+      <th>Fulfilleddate</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @commitments.each do |commitment| %>
+      <tr>
+        <td><%= commitment.individual %></td>
+        <td><%= commitment.charity_offer %></td>
+        <td><%= commitment.business_counter_offer %></td>
+        <td><%= commitment.expectedDate %></td>
+        <td><%= commitment.fulfilled %></td>
+        <td><%= commitment.fulfilledDate %></td>
+        <td><%= link_to 'Show', commitment %></td>
+        <td><%= link_to 'Edit', edit_commitment_path(commitment) %></td>
+        <td><%= link_to 'Destroy', commitment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Commitment', new_commitment_path %>

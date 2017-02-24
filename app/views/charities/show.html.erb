@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @charity.name %>
+</p>
+
+<p>
+  <strong>Shortcode:</strong>
+  <%= @charity.shortCode %>
+</p>
+
+<p>
+  <strong>Shortdescription:</strong>
+  <%= @charity.shortDescription %>
+</p>
+
+<p>
+  <strong>Longdescription:</strong>
+  <%= @charity.longDescription %>
+</p>
+
+<p>
+  <strong>Contactemail:</strong>
+  <%= @charity.contactEmail %>
+</p>
+
+<p>
+  <strong>Contactphone:</strong>
+  <%= @charity.contactPhone %>
+</p>
+
+<%= link_to 'Edit', edit_charity_path(@charity) %> |
+<%= link_to 'Back', charities_path %>

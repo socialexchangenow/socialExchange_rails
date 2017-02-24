@@ -1,0 +1,1 @@
+json.partial! "business_counter_offers/business_counter_offer", business_counter_offer: @business_counter_offer

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Individuals</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Sourceid</th>
+      <th>Firstname</th>
+      <th>Lastname</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @individuals.each do |individual| %>
+      <tr>
+        <td><%= individual.source %></td>
+        <td><%= individual.sourceID %></td>
+        <td><%= individual.firstName %></td>
+        <td><%= individual.lastName %></td>
+        <td><%= individual.email %></td>
+        <td><%= link_to 'Show', individual %></td>
+        <td><%= link_to 'Edit', edit_individual_path(individual) %></td>
+        <td><%= link_to 'Destroy', individual, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Individual', new_individual_path %>

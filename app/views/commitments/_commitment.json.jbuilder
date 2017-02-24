@@ -1,0 +1,2 @@
+json.extract! commitment, :id, :individual_id, :charity_offer_id, :business_counter_offer_id, :expectedDate, :fulfilled, :fulfilledDate, :created_at, :updated_at
+json.url commitment_url(commitment, format: :json)

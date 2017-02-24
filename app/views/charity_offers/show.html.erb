@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Charity:</strong>
+  <%= @charity_offer.charity %>
+</p>
+
+<p>
+  <strong>Shortcode:</strong>
+  <%= @charity_offer.shortCode %>
+</p>
+
+<p>
+  <strong>Shortdescription:</strong>
+  <%= @charity_offer.shortDescription %>
+</p>
+
+<p>
+  <strong>Longdescription:</strong>
+  <%= @charity_offer.longDescription %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @charity_offer.amount %>
+</p>
+
+<%= link_to 'Edit', edit_charity_offer_path(@charity_offer) %> |
+<%= link_to 'Back', charity_offers_path %>
