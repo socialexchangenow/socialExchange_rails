@@ -5,7 +5,7 @@ class MotionaiController < ApplicationController
     puts "motion.ai: globalhook: params=#{params.inspect}"
 
     # boostrap the start method
-    render json: { userStatus: "member" } and
+    render json: { userStatus: "firsttimer" } and
       return if params[ "moduleNickname" ] == "Start" && 
         params[ "direction" ] == "in" 
 
