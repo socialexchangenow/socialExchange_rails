@@ -43,10 +43,10 @@ class MotionaiController < ApplicationController
             buttons: 
 	      (cStart..cEnd).map do |j|
 	        {
-                  buttonText: charities[j].name,
+                  buttonText: "Select: #{charities[j].name}",
                   buttonType: "module",
                   webviewHeight: nil,
-                  target:  'Select Charity Offers',
+                  target:  "Code: #{charities[j].shortCode}",
 		}
 	      end
 	  }
