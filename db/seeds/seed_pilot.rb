@@ -71,3 +71,4 @@ Seed_Charity_Offers.each do |sco|
     charity_offer.charity_id = charity.id
     charity_offer.save
   end
+end
