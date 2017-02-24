@@ -29,23 +29,25 @@ class MotionaiController < ApplicationController
 
     def handleSelectCharity( p )
       if p[ "direction" ] == "in"
-        charities = Charities.all.to_a
+        charities = Charity.all.to_a
 	numCards = charities.length / 3 + 1
 	cards = []
 	(0..numCards-1).each do |i|
 	  cStart = i*3
-	  cEnd = [cStart + 3, charities.length-1 ].min
+	  cEnd = [cStart + 2, charities.length-1 ].min
 	  card = {
             cardTitle: "Select a charity",
-            cardSubtitle: null,
-            cardImage: null,
-            cardLink: null,
+            cardSubtitle: nil,
+            cardImage: nil,
+            cardLink: nil,
             buttons: 
-	      (cStart..cEnd).each do |j|
-                buttonText: charities[j].name,
-                buttonType: "module",
-                webviewHeight: null,
-                target:  'Select Charity Offers',
+	      (cStart..cEnd).map do |j|
+	        {
+                  buttonText: charities[j].name,
+                  buttonType: "module",
+                  webviewHeight: nil,
+                  target:  'Select Charity Offers',
+		}
 	      end
 	  }
 	  cards << card
