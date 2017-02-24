@@ -19,7 +19,7 @@ class MotionaiController < ApplicationController
   private
 
     def handleStart( p )
-      if p[ "direction"a ] == "in"
+      if p[ "direction" ] == "in"
         render json: { userStatus: "firsttimer" }
         return true
       end
@@ -36,16 +36,16 @@ class MotionaiController < ApplicationController
 	  cStart = i*3
 	  cEnd = [cStart + 3, charities.length-1 ].min
 	  card = {
-            cardTitle: "Select a charity"
-            , cardSubtitle: null
-            , cardImage: null
-            , cardLink: null
-            , buttons: 
+            cardTitle: "Select a charity",
+            cardSubtitle: null,
+            cardImage: null,
+            cardLink: null,
+            buttons: 
 	      (cStart..cEnd).each do |j|
-                buttonText: charities[j].name
-                , buttonType: "module"
-                , webviewHeight: null
-                , target:  'Select Charity Offers'
+                buttonText: charities[j].name,
+                buttonType: "module",
+                webviewHeight: null,
+                target:  'Select Charity Offers',
 	      end
 	  }
 	  cards << card
