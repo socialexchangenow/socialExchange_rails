@@ -53,7 +53,7 @@ class MotionaiController < ApplicationController
 	  cards << card
 	end
 
-        render json: { "cards": cards }
+        render json: { status: "hook response", "cards": cards }
 	return true
       end
 
