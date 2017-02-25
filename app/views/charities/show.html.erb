@@ -29,16 +29,24 @@
   <strong>Contactphone:</strong>
   <%= @charity.contactPhone %>
 </p>
+
 <p>
-  <strong>Charity Offers:</strong>
-  <%= @charity.charity_offers.each do |charity_offer| %>
+  <br>
+  <h2>Charity Offers</h2>
+<% @charity.charity_offers.each do |charity_offer| %>
   <tr>
-    <td>Description: <%=charity_offer.shortDescription %></td>
-    <td>Amount: <%=charity_offer.amount %></td>
-    <td>Last Updated: <%=charity_offer.updated_at %></td>
+    <p><td><strong>Short Code: </strong><%= charity_offer.shortCode %></td></p>
+    <p><td><strong>Short Description: </strong><%= charity_offer.shortDescription %></td></p>
+    <p><td><strong>Long Description</strong><%= charity_offer.longDescription %></td></p>
+    <td><strong>Amount: </strong><%= charity_offer.amount %></td><br>
+    <td><%= link_to 'Show', charity_offer %></td>
+    <td><%= link_to 'Edit', edit_charity_offer_path(charity_offer) %></td>
+    <td><%= link_to 'Destroy', charity_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
-  <% end %>
+  <p>_________________________________________________________________</p>
+<% end %>
 </p>
+<h2>Create new Charity Offer </h2>
 
 
 <%= link_to 'Edit', edit_charity_path(@charity) %> |
