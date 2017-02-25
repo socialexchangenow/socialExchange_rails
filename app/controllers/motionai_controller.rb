@@ -3,13 +3,10 @@ class MotionaiController < ApplicationController
 
   def globalhook
     puts "motion.ai: globalhook: params=#{params.inspect}"
-    render json: {} and return
 
     response = nil
 
     case params[ "moduleID" ]
-    when "425524"
-      response = handleWelcome( params )
     when "428509"
       response = handleSelectCharity( params )
     end
@@ -44,63 +41,12 @@ class MotionaiController < ApplicationController
       #nil
     end
 
-    def getCharityCards( p )
-      charities = Charity.all.to_a
-      numCards = charities.length / 3 + 1
-      cards = []
-      (0..numCards-1).each do |i|
-        cStart = i*3
-        cEnd = [cStart + 2, charities.length-1 ].min
-        card = {
-          cardTitle: "Select a charity",
-          cardSubtitle: nil,
-          cardImage: nil,
-          cardLink: nil,
-          buttons: 
-            (cStart..cEnd).map do |j|
-              {
-                buttonText: "#{charities[j].name}",
-                buttonType: "module",
-                webviewHeight: nil,
-                target: "Code: #{charities[j].shortCode}",
-              }
-            end
-        }
-        cards << card
-      end
-
-      return { status: "hook response", "cards": cards }
-    end
-
     def handleSelectCharity( p )
       strReply = CGI.unescape( p[ "reply" ] )
       strDirection = p[ "direction" ]
 
-      if p[ "direction" ] == "out" && strReply == "Awesome!"
-        charities = Charity.all.to_a
-        numCards = charities.length / 3 + 1
-        cards = []
-        (0..numCards-1).each do |i|
-          cStart = i*3
-          cEnd = [cStart + 2, charities.length-1 ].min
-          card = {
-            cardTitle: "Select a charity",
-            cardSubtitle: nil,
-            cardImage: nil,
-            cardLink: nil,
-            buttons: 
-              (cStart..cEnd).map do |j|
-                {
-                  buttonText: "#{charities[j].name}",
-                  buttonType: "module",
-                  webviewHeight: nil,
-                  target: "Code: #{charities[j].shortCode}",
-                }
-              end
-          }
-          cards << card
-        end
-
+      if p[ "direction" ] == "out" && !strReply.start_with? "Code:"
+        cards = getCharityCards p
         return { status: "hook response", "cards": cards }
 
       elsif p[ "direction" ] == "in" && strReply[0..4] == "Code:"
@@ -127,6 +73,34 @@ class MotionaiController < ApplicationController
       end
 
       nil
+    end
+
+    def getCharityCards( p )
+      charities = Charity.all.to_a
+      numCards = charities.length / 3 + 1
+      cards = []
+      (0..numCards-1).each do |i|
+        cStart = i*3
+        cEnd = [cStart + 2, charities.length-1 ].min
+        card = {
+          cardTitle: "Select a charity",
+          cardSubtitle: nil,
+          cardImage: nil,
+          cardLink: nil,
+          buttons: 
+            (cStart..cEnd).map do |j|
+              {
+                buttonText: "#{charities[j].name}",
+                buttonType: "module",
+                webviewHeight: nil,
+                target: "Code: #{charities[j].shortCode}",
+              }
+            end
+        }
+        cards << card
+      end
+
+      return { status: "hook response", "cards": cards }
     end
 
     def handleSelectCharityOffer( p )
