@@ -17,7 +17,7 @@ class MotionaiController < ApplicationController
 
     puts "motion.ai: globalhook: response=#{response}"
 
-    render json: response unless handled
+    render json: response
   end
 
   private
