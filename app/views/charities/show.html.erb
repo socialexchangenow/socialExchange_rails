@@ -35,10 +35,26 @@
   <h2>Charity Offers</h2>
   <% @charity.charity_offers.each do |charity_offer| %>
       <tr>
-        <p><td><strong>Short Code: </strong><%= charity_offer.shortCode %></td></p>
-        <p><td><strong>Short Description: </strong><%= charity_offer.shortDescription %></td></p>
-        <p><td><strong>Long Description</strong><%= charity_offer.longDescription %></td></p>
-        <td><strong>Amount: </strong><%= charity_offer.amount %></td><br>
+        <p>
+          <td>
+            <strong>Short Code: </strong><%= charity_offer.shortCode %>
+          </td>
+        </p>
+        <p>
+          <td>
+            <strong>Short Description: </strong><%= charity_offer.shortDescription %>
+          </td>
+        </p>
+        <p>
+          <td>
+            <strong>Long Description</strong><%= charity_offer.longDescription %>
+          </td>
+        </p>
+        <p>
+          <td>
+            <strong>Amount: </strong><%= charity_offer.amount %>
+          </td>
+        </p>
         <div class="nav_bar">
           <ul>
             <li><%= link_to 'Show', charity_offer %></li>
