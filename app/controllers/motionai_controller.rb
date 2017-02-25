@@ -30,7 +30,7 @@ class MotionaiController < ApplicationController
 
   def selectcharityhook
     puts "motion.ai: selectcharityhook: params=#{params.inspect}"
-    response =  handleSelectCharity( params )
+    response =  getCharityCards( params )
     puts "motion.ai: selectcharityhook: response=#{response.inspect}"
     render json: response
   end
