@@ -14,6 +14,7 @@
 #
 
 class Commitment < ActiveRecord::Base
+  validates :shortCode, length: { maximum: 6 }
   belongs_to :individual
   belongs_to :charity_offer
   belongs_to :business_counter_offer

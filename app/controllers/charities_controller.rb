@@ -10,6 +10,7 @@ class CharitiesController < ApplicationController
   # GET /charities/1
   # GET /charities/1.json
   def show
+    @charities = Charity.all.to_a
   end
 
   # GET /charities/new

@@ -12,8 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :charity_id %><br>
-    <%= f.text_field :charity_id %>
+    <!--<%= f.label :charity_id %><br>
+    <%= f.text_field :charity_id %>-->
+    <%= f.select(:charity_id) do %>
+        <% @charities.each do |c| -%>
+          <%= content_tag(:option, c.name, value: c.id) %>
+        <% end %>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :shortCode %><br>

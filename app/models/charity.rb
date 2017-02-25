@@ -14,5 +14,6 @@
 #
 
 class Charity < ActiveRecord::Base
+  validates :shortCode, length: { maximum: 6 }
   has_many :charity_offers
 end

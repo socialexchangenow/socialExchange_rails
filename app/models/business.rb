@@ -14,5 +14,6 @@
 #
 
 class Business < ActiveRecord::Base
+  validates :shortCode, length: { maximum: 6 }
   has_many :business_counter_offers
 end

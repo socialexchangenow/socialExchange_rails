@@ -14,4 +14,5 @@
 
 class Individual < ActiveRecord::Base
   has_many :commitments
+  validates :source, length: { maximum: 3 }
 end
