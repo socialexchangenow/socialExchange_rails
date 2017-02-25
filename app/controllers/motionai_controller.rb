@@ -28,7 +28,7 @@ class MotionaiController < ApplicationController
     end
 
     def handleSelectCharity( p )
-      if p[ "direction" ] == "in"
+      if p[ "direction" ] == "out" && p[ "reply" ] == "Awesome!"
         charities = Charity.all.to_a
 	numCards = charities.length / 3 + 1
 	cards = []
