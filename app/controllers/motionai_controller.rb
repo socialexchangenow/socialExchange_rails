@@ -45,7 +45,7 @@ class MotionaiController < ApplicationController
       strReply = CGI.unescape( p[ "reply" ] )
       strDirection = p[ "direction" ]
 
-      if p[ "direction" ] == "out" && !strReply.start_with? "Code:"
+      if p[ "direction" ] == "out" && !strReply.start_with?( "Code:" )
         cards = getCharityCards p
         return { status: "hook response", "cards": cards }
 
