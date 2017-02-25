@@ -29,6 +29,18 @@
   <strong>Contactphone:</strong>
   <%= @charity.contactPhone %>
 </p>
+<p>
+  <strong>Charity Offers:</strong>
+  <%= @charity.charity_offers.each do |charity_offer| %>
+  <tr>
+    <td><%=charity_offer.shortDescription %></td>
+    <td><%=charity_offer.amount %></td>
+    <td>Last Updated: <%=charity_offer.updated_at %></td>
+  </tr>
+  <% end %>
+
+</p>
+
 
 <%= link_to 'Edit', edit_charity_path(@charity) %> |
 <%= link_to 'Back', charities_path %>
