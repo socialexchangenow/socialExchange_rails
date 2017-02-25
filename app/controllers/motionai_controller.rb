@@ -19,10 +19,10 @@ class MotionaiController < ApplicationController
   private
 
     def handleWelcome( p )
-      if p[ "direction" ] == "in"
+      # if p[ "direction" ] == "in"
         render json: { userStatus: "firsttimer" }
         return true
-      end
+      # end
 
       false
     end
