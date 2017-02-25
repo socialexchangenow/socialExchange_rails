@@ -4,32 +4,35 @@ class MotionaiController < ApplicationController
   def globalhook
     puts "motion.ai: globalhook: params=#{params.inspect}"
 
-    handled = false
+    response = nil
 
     case params[ "moduleID" ]
     when "425524"
-      handled = handleWelcome( params )
+      response = handleWelcome( params )
     when "428509"
-      handled = handleSelectCharity( params )
+      response = handleSelectCharity( params )
     end
 
-    render json: {} unless handled
+    response = {} if response.nil?
+
+    puts "motion.ai: globalhook: response=#{response}"
+
+    render json: response unless handled
   end
 
   private
 
     def handleWelcome( p )
       # if p[ "direction" ] == "in"
-        render json: { userStatus: "firsttimer" }
-        return true
+        return { userStatus: "firsttimer" }
       # end
 
-      false
+      nil
     end
 
     def handleSelectCharity( p )
       if p[ "direction" ] != "out"
-        return false
+        return nil
       end
 
       if p[ "reply" ] == "Awesome!"
@@ -57,25 +60,32 @@ class MotionaiController < ApplicationController
           cards << card
         end
 
-        render json: { status: "hook response", "cards": cards }
-        return true
+        return { status: "hook response", "cards": cards }
 
-      elsif p[ "reply" ].start_with? "Code:"
+      elsif p[ "reply" ].start_with? "Code: "
+        charityCode = p[ "reply" ][6..-1]
+	charity = Charity.where( shortCode: charityCode ).first
+	unless charity.nil?
+	  return {
+	    currentCharityName: charity.name,
+	    currentCharityCode: charity.shortCode,
+	    status: "code match"
+	  }
+	end
 
       else
         charityName = p[ "reply" ].downcase
 	charity = Charity.where( "name ILIKE %#{charityName}%" ).first
 	unless charity.nil?
-	  render json: {
+	  return {
 	    currentCharityName: charity.name,
 	    currentCharityCode: charity.shortCode,
 	    status: "soft match"
 	  }
-	  return true
 	end
       end
 
-      false
+      nil
     end
 
 end
