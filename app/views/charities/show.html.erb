@@ -33,12 +33,11 @@
   <strong>Charity Offers:</strong>
   <%= @charity.charity_offers.each do |charity_offer| %>
   <tr>
-    <td><%=charity_offer.shortDescription %></td>
-    <td><%=charity_offer.amount %></td>
+    <td>Description: <%=charity_offer.shortDescription %></td>
+    <td>Amount: <%=charity_offer.amount %></td>
     <td>Last Updated: <%=charity_offer.updated_at %></td>
   </tr>
   <% end %>
-
 </p>
 
 
