@@ -7,8 +7,8 @@ class MotionaiController < ApplicationController
     handled = false
 
     case params[ "moduleNickname" ]
-    when "Start"
-      handled = handleStart( params )
+    when "Welcome"
+      handled = handleWelcome( params )
     when "Select Charity"
       handled = handleSelectCharity( params )
     end
@@ -18,7 +18,7 @@ class MotionaiController < ApplicationController
 
   private
 
-    def handleStart( p )
+    def handleWelcome( p )
       if p[ "direction" ] == "in"
         render json: { userStatus: "firsttimer" }
         return true
