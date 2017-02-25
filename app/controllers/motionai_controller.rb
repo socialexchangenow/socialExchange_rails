@@ -23,7 +23,7 @@ class MotionaiController < ApplicationController
 
   def bootstraphook
     puts "motion.ai: bootstraphook: params=#{params.inspect}"
-    return { userStatus: "firsttimer" }
+    render json: { userStatus: "firsttimer" }
   end
 
   private
