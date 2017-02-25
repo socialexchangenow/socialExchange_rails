@@ -31,11 +31,10 @@ class MotionaiController < ApplicationController
     end
 
     def handleSelectCharity( p )
-      if p[ "direction" ] != "out"
-        return nil
-      end
+      strReply = CGI.unescape p[ "reply" ]
+      strDirection = p[ "direction" ]
 
-      if p[ "reply" ] == "Awesome!"
+      if strDirection == "out" && strReply == "Awesome!"
         charities = Charity.all.to_a
         numCards = charities.length / 3 + 1
         cards = []
@@ -62,8 +61,8 @@ class MotionaiController < ApplicationController
 
         return { status: "hook response", "cards": cards }
 
-      elsif p[ "reply" ].start_with? "Code: "
-        charityCode = p[ "reply" ][6..-1]
+      elsif strDirection == "in" && strReply.start_with? "Code: "
+        charityCode = strReply[6..-1]
 	charity = Charity.where( shortCode: charityCode ).first
 	unless charity.nil?
 	  return {
@@ -73,8 +72,8 @@ class MotionaiController < ApplicationController
 	  }
 	end
 
-      else
-        charityName = p[ "reply" ].downcase
+      else strDirection == "in"
+        charityName = strReply.downcase
 	charity = Charity.where( "name ILIKE %#{charityName}%" ).first
 	unless charity.nil?
 	  return {
