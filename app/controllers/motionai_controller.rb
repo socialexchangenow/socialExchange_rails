@@ -6,10 +6,10 @@ class MotionaiController < ApplicationController
 
     handled = false
 
-    case params[ "moduleNickname" ]
-    when "Welcome"
+    case params[ "moduleID" ]
+    when "425524"
       handled = handleWelcome( params )
-    when "Select Charity"
+    when "428509"
       handled = handleSelectCharity( params )
     end
 
