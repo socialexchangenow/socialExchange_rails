@@ -46,7 +46,7 @@ class MotionaiController < ApplicationController
                   buttonText: "Select: #{charities[j].name}",
                   buttonType: "module",
                   webviewHeight: nil,
-                  target: nil, #"Code: #{charities[j].shortCode}",
+                  target: "Code: #{charities[j].shortCode}",
 		}
 	      end
 	  }
