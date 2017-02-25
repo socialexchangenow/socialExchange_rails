@@ -28,33 +28,51 @@ class MotionaiController < ApplicationController
     end
 
     def handleSelectCharity( p )
-      if p[ "direction" ] == "out" && p[ "reply" ] == "Awesome!"
+      if p[ "direction" ] != "out"
+        return false
+      end
+
+      if p[ "reply" ] == "Awesome!"
         charities = Charity.all.to_a
-	numCards = charities.length / 3 + 1
-	cards = []
-	(0..numCards-1).each do |i|
-	  cStart = i*3
-	  cEnd = [cStart + 2, charities.length-1 ].min
-	  card = {
+        numCards = charities.length / 3 + 1
+        cards = []
+        (0..numCards-1).each do |i|
+          cStart = i*3
+          cEnd = [cStart + 2, charities.length-1 ].min
+          card = {
             cardTitle: "Select a charity",
             cardSubtitle: nil,
             cardImage: nil,
             cardLink: nil,
             buttons: 
-	      (cStart..cEnd).map do |j|
-	        {
-                  buttonText: "Select: #{charities[j].name}",
+              (cStart..cEnd).map do |j|
+                {
+                  buttonText: "#{charities[j].name}",
                   buttonType: "module",
                   webviewHeight: nil,
                   target: "Code: #{charities[j].shortCode}",
-		}
-	      end
-	  }
-	  cards << card
-	end
+                }
+              end
+          }
+          cards << card
+        end
 
         render json: { status: "hook response", "cards": cards }
-	return true
+        return true
+
+      elsif p[ "reply" ].start_with? "Code:"
+
+      else
+        charityName = p[ "reply" ].downcase
+	charity = Charity.where( "name ILIKE %#{charityName}%" ).first
+	unless charity.nil?
+	  render json: {
+	    currentCharityName: charity.name,
+	    currentCharityCode: charity.shortCode,
+	    status: "soft match"
+	  }
+	  return true
+	end
       end
 
       false
