@@ -30,24 +30,36 @@
   <%= @charity.contactPhone %>
 </p>
 
-<p>
+<div  class="charity_offer_container">
   <br>
   <h2>Charity Offers</h2>
-<% @charity.charity_offers.each do |charity_offer| %>
-  <tr>
-    <p><td><strong>Short Code: </strong><%= charity_offer.shortCode %></td></p>
-    <p><td><strong>Short Description: </strong><%= charity_offer.shortDescription %></td></p>
-    <p><td><strong>Long Description</strong><%= charity_offer.longDescription %></td></p>
-    <td><strong>Amount: </strong><%= charity_offer.amount %></td><br>
-    <td><%= link_to 'Show', charity_offer %></td>
-    <td><%= link_to 'Edit', edit_charity_offer_path(charity_offer) %></td>
-    <td><%= link_to 'Destroy', charity_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-  <p>_________________________________________________________________</p>
-<% end %>
-</p>
+  <% @charity.charity_offers.each do |charity_offer| %>
+      <tr>
+        <p><td><strong>Short Code: </strong><%= charity_offer.shortCode %></td></p>
+        <p><td><strong>Short Description: </strong><%= charity_offer.shortDescription %></td></p>
+        <p><td><strong>Long Description</strong><%= charity_offer.longDescription %></td></p>
+        <td><strong>Amount: </strong><%= charity_offer.amount %></td><br>
+        <div class="nav_bar">
+          <ul>
+            <li><%= link_to 'Show', charity_offer %></li>
+            <li><%= link_to 'Edit', edit_charity_offer_path(charity_offer) %></li>
+            <li><%= link_to 'Destroy', charity_offer, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul
+        </div>
+      </tr>
+      <p>_________________________________________________________________</p>
+  <% end %>
+
 <h2>Create new Charity Offer </h2>
 
 
-<%= link_to 'Edit', edit_charity_path(@charity) %> |
-<%= link_to 'Back', charities_path %>
+</div>
+
+<div class="nav_bar">
+  <ul>
+    <li><%= link_to 'New Charity offer', new_charity_offer_path %></li>
+    <li><%= link_to 'Edit', edit_charity_path(@charity) %></li>
+    <li><%= link_to 'Back', charities_path %></li>
+
+  </ul>
+</div>
