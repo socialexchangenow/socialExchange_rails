@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @charity.name %>
+  <h1>
+
+    <%= @charity.name %>
+  </h1>
+</p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @charity.id %>
 </p>
 
 <p>
@@ -30,10 +37,19 @@
   <%= @charity.contactPhone %>
 </p>
 
+<div class="nav_bar">
+  <ul>
+    <li><%= link_to 'Create New Charity Offer', new_charity_offer_path %></li>
+    <li><%= link_to 'Edit Current Charity', edit_charity_path(@charity) %></li>
+    <li><%= link_to 'Back', charities_path %></li>
+  </ul>
+</div>
+
 <div  class="charity_offer_container">
   <br>
   <h2>Charity Offers</h2>
   <% @charity.charity_offers.each do |charity_offer| %>
+    <p>_________________________________________________________________</p>
       <tr>
         <p>
           <td>
@@ -63,19 +79,5 @@
           </ul
         </div>
       </tr>
-      <p>_________________________________________________________________</p>
   <% end %>
-
-<h2>Create new Charity Offer </h2>
-
-
-</div>
-
-<div class="nav_bar">
-  <ul>
-    <li><%= link_to 'New Charity offer', new_charity_offer_path %></li>
-    <li><%= link_to 'Edit', edit_charity_path(@charity) %></li>
-    <li><%= link_to 'Back', charities_path %></li>
-
-  </ul>
 </div>
