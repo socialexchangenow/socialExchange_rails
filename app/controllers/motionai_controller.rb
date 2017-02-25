@@ -46,8 +46,7 @@ class MotionaiController < ApplicationController
       strDirection = p[ "direction" ]
 
       if p[ "direction" ] == "out" && !strReply.start_with?( "Code:" )
-        cards = getCharityCards p
-        return { status: "hook response", "cards": cards }
+        return getCharityCards p
 
       elsif p[ "direction" ] == "in" && strReply[0..4] == "Code:"
         charityCode = strReply[6..-1]
