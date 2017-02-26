@@ -43,7 +43,7 @@ class ChatfuelController < ApplicationController
 
     begin
       i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] )
-      response[ "set_attributes" ][ "user_status" ] = "member" unless i.nil?
+      response[ :set_attributes ][ :user_status ] = "member" unless i.nil?
     rescue Exception => e
       puts "Exception: e=#{e.message}"
       puts e.backtrace.join( "\n")
