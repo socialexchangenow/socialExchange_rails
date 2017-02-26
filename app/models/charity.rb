@@ -14,5 +14,5 @@
 #
 
 class Charity < ActiveRecord::Base
-  has_many :charity_offers
+  has_many :charity_offers, :dependent => :destroy
 end
