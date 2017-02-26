@@ -7,7 +7,7 @@ class ChatfuelController < ApplicationController
     response = {}
 
     begin
-      i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] )
+      i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] ).first
       if i.nil?
         i = Individual.create( {
           source: params[ "source" ],
