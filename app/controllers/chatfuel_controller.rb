@@ -53,6 +53,59 @@ class ChatfuelController < ApplicationController
     render json: response
   end
 
+  def getcharitieshook
+    puts "chatfuel: getcharitieshook: params=#{params.inspect}"
+
+    response = {
+      messages: [
+        {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: []
+            }
+          }
+        }
+      ]
+    }
+
+    begin
+      charities = Charity.all.to_a
+      numCards = charities.length / 3 + 1
+      cards = []
+      elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
+      (0..numCards-1).each do |i|
+        cStart = i*3
+        cEnd = [cStart + 2, charities.length-1 ].min
+        element = {
+          title: "Select a charity",
+          subtitle: nil,
+          image_url: nil,
+          buttons: 
+            (cStart..cEnd).map do |j|
+              {
+                type: "show_block",
+                title: "#{charities[j].name}",
+                block_name: "Select a charity offer",
+		set_attributes: {
+                  current_charity: "#{charities[j].id}",
+		}
+              }
+            end
+        }
+        elements << element
+      end
+    rescue Exception => e
+      response = {}
+      puts "Exception: e=#{e.message}"
+      puts e.backtrace.join( "\n")
+    end
+
+    puts "chatfuel: getcharitieshook: response=#{response.inspect}"
+    render json: response
+  end
+
   private
 
 end
