@@ -179,6 +179,30 @@ class ChatfuelController < ApplicationController
       io.destroy if bRemove
       io = IndividualOffer.create( individual_id: i.id, charity_offer_id: co.id ) if !bRemove && io.nil?
 
+      responseText = "Offer removed" if bRemove
+      responseText = "Offer selected" unless bRemove
+
+      response = {
+        messages: [
+          {
+            attachment: {
+              type: "template",
+              payload: {
+                template_type: "button",
+                text: responseText,
+                buttons: [
+                  {
+                    "type": "show_block",
+                    "block_name": "Maion Menu",
+                    "title": "Back to Main Menu"
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      }
+
     rescue Exception => e
       puts "ichatfuel: individualofferhook: Exception: e=#{e.message}"
       puts e.backtrace.join( "\n")
