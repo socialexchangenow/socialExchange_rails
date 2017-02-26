@@ -269,6 +269,59 @@ class ChatfuelController < ApplicationController
     render json: response
   end
 
+  def getbusinesseshook
+    puts "chatfuel: getbusinesseshook: params=#{params.inspect}"
+
+    response = {
+      messages: [
+        {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: []
+            }
+          }
+        }
+      ]
+    }
+
+    begin
+      businesses = Business.all.to_a
+      numCards = businesses.length / 3 + 1
+      cards = []
+      elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
+      (0..numCards-1).each do |i|
+        cStart = i*3
+        cEnd = [cStart + 2, businesses.length-1 ].min
+        element = {
+          title: "Select a business",
+          subtitle: nil,
+          image_url: nil,
+          buttons: 
+            (cStart..cEnd).map do |j|
+              {
+                type: "show_block",
+                title: "#{businesses[j].name}",
+                block_name: "View a business",
+                set_attributes: {
+                  current_business: "#{businesses[j].id}",
+                }
+              }
+            end
+        }
+        elements << element
+      end
+    rescue Exception => e
+      response = {}
+      puts "chatfuel: getbusinesseshook: Exception: e=#{e.message}"
+      puts e.backtrace.join( "\n")
+    end
+
+    puts "chatfuel: getbusinesseshook: response=#{response.inspect}"
+    render json: response
+  end
+
   private
 
 end

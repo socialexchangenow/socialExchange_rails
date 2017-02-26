@@ -144,21 +144,50 @@ Seed_Charity_Offers = [
   },
 ]
 
+Seed_Businesses = [
+  {
+    name: "Time Hortons #127",
+    shortCode: "TH127",
+    shortDescription: "Tim Hortons #127",
+    longDescription: "Tim Hortons Location #127",
+  },
+  {
+    name: "Starbucks #7273",
+    shortCode: "SB7273",
+    shortDescription: "Starbucks #7273",
+    longDescription: "Starbucks Location #7273",
+  },
+  {
+    name: "Starbucks #3543",
+    shortCode: "SB3543",
+    shortDescription: "Starbucks #3543",
+    longDescription: "Starbucks Location #3543",
+  },
+]
+
 CharityOffer.destroy_all
 Charity.destroy_all
+Business.destroy_all
 
 Seed_Charities.each do |charity|
-  puts "Seed_Charities: Creating charity #{charity}"
+  #puts "Seed_Charities: Creating charity #{charity}"
   Charity.create charity
 end
 
 Seed_Charity_Offers.each do |sco|
   charity = Charity.where( shortCode: sco[ :charityCode ] ).first
-  puts "Seed_Charity_Offers: Creating offers for charity #{charity.name}"
+  #puts "Seed_Charity_Offers: Creating offers for charity #{charity.name}"
   sco[ :offers ].each do |offer|
-    puts "Seed_Charity_Offers: Creating offers #{offer}"
+    #puts "Seed_Charity_Offers: Creating offers #{offer}"
     charity_offer = CharityOffer.new offer 
     charity_offer.charity_id = charity.id
     charity_offer.save
   end
 end
+
+Seed_Businesses.each do |b|
+  puts "Seed_Businesses: Creating business #{b}"
+  Business.create b
+end
+
+
