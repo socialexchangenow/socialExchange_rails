@@ -34,9 +34,9 @@ class ChatfuelController < ApplicationController
     begin
       i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] )
       response = {
-        #"set_attributes": {
-        #  "user_status": "firsttimer"
-        #},
+        "set_attributes": {
+          "user_status": "firsttimer"
+        },
         "messages": [
           { "text": "Hello {{fb_first_name}}" }
         ]
