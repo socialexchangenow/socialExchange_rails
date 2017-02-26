@@ -1,0 +1,2 @@
+module ChatfuelHelper
+end
