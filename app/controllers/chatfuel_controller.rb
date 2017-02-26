@@ -126,10 +126,16 @@ class ChatfuelController < ApplicationController
     }
 
     begin
+      i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] ).first
       offers = CharityOffer.where( charity_id: charity_id ).to_a
       cards = []
       elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
       (0..[offers.length-1, maxCards-1].min).each do |i|
+        io = IndividualOffer.where( individual_id: i.id, charity_offer_id: offers[i].id ).first
+	button_title = "Remove" if io
+	button_title = "Select" unless io
+	block_name = "unpick charity offer" if io
+	block_name = "Pick charity offer" unless io
         element = {
           title: "#{offers[i].shortDescription}",
           subtitle: "#{offers[i].longDescription}",
@@ -137,16 +143,8 @@ class ChatfuelController < ApplicationController
           buttons: [
             {
               type: "show_block",
-              title: "Select",
-              block_name: "Pick charity offer",
-              set_attributes: {
-                current_charity_offer: "#{offers[i].id}",
-              }
-            },
-            {
-              type: "show_block",
-              title: "Remove",
-              block_name: "Unpick charity offer",
+              title: button_title,
+              block_name: block_name,
               set_attributes: {
                 current_charity_offer: "#{offers[i].id}",
               }
