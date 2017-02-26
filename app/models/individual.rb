@@ -13,6 +13,6 @@
 #
 
 class Individual < ActiveRecord::Base
-  has_many :commitments
-  has_many :individual_offers
+  has_many :commitments, :dependent => :destroy
+  has_many :individual_offers, :dependent => :destroy
 end
