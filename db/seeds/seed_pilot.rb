@@ -165,9 +165,9 @@ Seed_Businesses = [
   },
 ]
 
-CharityOffer.destroy_all
 Charity.destroy_all
 Business.destroy_all
+CharityOffer.destroy_all
 
 Seed_Charities.each do |charity|
   #puts "Seed_Charities: Creating charity #{charity}"
