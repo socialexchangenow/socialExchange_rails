@@ -54,6 +54,114 @@ Seed_Charity_Offers = [
         amount: 1000.00
       },
     ]
+    charityCode: "WUC001",
+    offers: [
+      {
+        shortCode: "SRV001",
+        shortDescription: "Answer survey question",
+        longDescription: "I will answer a question and promote you on social media every time I come to your establishment, if you donate $1 to World Vision Canada each time.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "CF001",
+        shortDescription: "Charitable Friends",
+        longDescription: "I will bring at least 2 friends with me to your establishment and we will promote you on social media, if you donate $2 to World Vision Canada for each of us.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "SC001",
+        shortDescription: "Share a Contribution",
+        longDescription: "I will donate $10 to World Vision Canada, if you double my donation.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "SME001",
+        shortDescription: "Social Media Xchange",
+        longDescription: "I will share a selfie with at least one of your staff members on social media, if you donate $5 to World Vision Canada each time.",
+        amount: 1000.00
+      },
+    ]
+    charityCode: "UNICEF",
+    offers: [
+      {
+        shortCode: "SRV001",
+        shortDescription: "Answer survey question",
+        longDescription: "I will answer a question and promote you on social media every time I come to your establishment, if you donate $1 to World Vision Canada each time.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "CF001",
+        shortDescription: "Charitable Friends",
+        longDescription: "I will bring at least 2 friends with me to your establishment and we will promote you on social media, if you donate $2 to World Vision Canada for each of us.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "SC001",
+        shortDescription: "Share a Contribution",
+        longDescription: "I will donate $10 to World Vision Canada, if you double my donation.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "SME001",
+        shortDescription: "Social Media Xchange",
+        longDescription: "I will share a selfie with at least one of your staff members on social media, if you donate $5 to World Vision Canada each time.",
+        amount: 1000.00
+      },
+    ]
+    charityCode: "CAMH",
+    offers: [
+      {
+        shortCode: "SRV001",
+        shortDescription: "Answer survey question",
+        longDescription: "I will answer a question and promote you on social media every time I come to your establishment, if you donate $1 to World Vision Canada each time.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "CF001",
+        shortDescription: "Charitable Friends",
+        longDescription: "I will bring at least 2 friends with me to your establishment and we will promote you on social media, if you donate $2 to World Vision Canada for each of us.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "SC001",
+        shortDescription: "Share a Contribution",
+        longDescription: "I will donate $10 to World Vision Canada, if you double my donation.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "SME001",
+        shortDescription: "Social Media Xchange",
+        longDescription: "I will share a selfie with at least one of your staff members on social media, if you donate $5 to World Vision Canada each time.",
+        amount: 1000.00
+      },
+    ]
+    charityCode: "WVC001",
+    offers: [
+      {
+        shortCode: "SRV001",
+        shortDescription: "Answer survey question",
+        longDescription: "I will answer a question and promote you on social media every time I come to your establishment, if you donate $1 to World Vision Canada each time.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "CF001",
+        shortDescription: "Charitable Friends",
+        longDescription: "I will bring at least 2 friends with me to your establishment and we will promote you on social media, if you donate $2 to World Vision Canada for each of us.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "SC001",
+        shortDescription: "Share a Contribution",
+        longDescription: "I will donate $10 to World Vision Canada, if you double my donation.",
+        amount: 1000.00
+      },
+      {
+        shortCode: "SME001",
+        shortDescription: "Social Media Xchange",
+        longDescription: "I will share a selfie with at least one of your staff members on social media, if you donate $5 to World Vision Canada each time.",
+        amount: 1000.00
+      },
+    ]
   },
 ]
 

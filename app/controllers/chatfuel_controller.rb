@@ -127,10 +127,9 @@ class ChatfuelController < ApplicationController
 
     begin
       offers = CharityOffer.where( charity_id: charity_id ).to_a
-      numCards = offers.length / 3 + 1
       cards = []
       elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
-      (0..[numCards-1, maxCards-1].min).each do |i|
+      (0..[offers.length-1, maxCards-1].min).each do |i|
         element = {
           title: "#{offers[i].shortDescription}",
           subtitle: "#{offers[i].longDescription}",
