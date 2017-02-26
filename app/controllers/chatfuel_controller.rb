@@ -236,7 +236,7 @@ class ChatfuelController < ApplicationController
       cards = []
       elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
       (0..[offers.length-1, maxCards-1].min).each do |i|
-        co = CharityOffer.where( id: offer[i].charity_offer_id ).first
+        co = CharityOffer.where( id: offers[i].charity_offer_id ).first
         c = co.charity
         element = {
           title: "#{c.name}: #{co.shortDescription}",
