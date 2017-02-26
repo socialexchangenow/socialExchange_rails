@@ -16,5 +16,5 @@
 class BusinessCounterOffer < ActiveRecord::Base
   belongs_to :business
   belongs_to :charity_offer
-  has_many :commitments
+  has_many :commitments, :dependent => :destroy
 end
