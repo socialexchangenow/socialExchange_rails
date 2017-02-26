@@ -36,9 +36,9 @@ class ChatfuelController < ApplicationController
       "set_attributes": {
         "user_status": "firsttimer"
       },
-      "messages": [
-        { "text": "Hello {{fb_first_name}}" }
-      ]
+      #"messages": [
+      #  { "text": "Hello {{fb_first_name}}" }
+      #]
     }
 
     begin
