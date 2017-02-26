@@ -1,0 +1,2 @@
+module IndividualOffersHelper
+end

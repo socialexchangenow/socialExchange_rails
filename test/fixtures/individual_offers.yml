@@ -1,0 +1,20 @@
+# == Schema Information
+#
+# Table name: individual_offers
+#
+#  id               :integer          not null, primary key
+#  individual_id    :integer
+#  charity_offer_id :integer
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  individual_id: 
+  charity_offer_id: 
+
+two:
+  individual_id: 
+  charity_offer_id: 

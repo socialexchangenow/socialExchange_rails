@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Individual:</strong>
+  <%= @individual_offer.individual %>
+</p>
+
+<p>
+  <strong>Charity offer:</strong>
+  <%= @individual_offer.charity_offer %>
+</p>
+
+<%= link_to 'Edit', edit_individual_offer_path(@individual_offer) %> |
+<%= link_to 'Back', individual_offers_path %>

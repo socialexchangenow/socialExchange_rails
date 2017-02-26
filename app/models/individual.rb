@@ -14,4 +14,5 @@
 
 class Individual < ActiveRecord::Base
   has_many :commitments
+  has_many :individual_offers
 end

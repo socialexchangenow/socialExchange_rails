@@ -98,7 +98,7 @@ class ChatfuelController < ApplicationController
       end
     rescue Exception => e
       response = {}
-      puts "Exception: e=#{e.message}"
+      puts "chatfuel: getcharitieshook: Exception: e=#{e.message}"
       puts e.backtrace.join( "\n")
     end
 
@@ -157,11 +157,34 @@ class ChatfuelController < ApplicationController
       end
     rescue Exception => e
       response = {}
-      puts "Exception: e=#{e.message}"
+      puts "chatfuel: getcharityoffershook: Exception: e=#{e.message}"
       puts e.backtrace.join( "\n")
     end
 
     puts "chatfuel: getcharityoffershook: response=#{response.inspect}"
+    render json: response
+  end
+
+  def individualofferhook
+    puts "chatfuel: individualofferhook: params=#{params.inspect}"
+
+    response = {}
+
+    begin
+      bRemove = params[ "action" ] == "remove"
+      i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] ).first
+      co = CharityOffer.where( id: params[ "charity_offer_id" ] ).first
+      io = IndividualOffer.where( individual_id: i.id, charity_offer_id: co.id ).first
+
+      io.destroy if bRemove
+      io = IndividualOffer.create( individual_id: i.id, charity_offer_id: co.id ) if !bRemove && io.nil?
+
+    rescue Exception => e
+      puts "ichatfuel: individualofferhook: Exception: e=#{e.message}"
+      puts e.backtrace.join( "\n")
+    end
+ 
+    puts "chatfuel: individualofferhook: response=#{response.inspect}"
     render json: response
   end
 

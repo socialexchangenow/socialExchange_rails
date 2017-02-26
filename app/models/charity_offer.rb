@@ -16,4 +16,5 @@ class CharityOffer < ActiveRecord::Base
   belongs_to :charity
   has_many :business_counter_offers
   has_many :commitments
+  has_many :individual_offers
 end

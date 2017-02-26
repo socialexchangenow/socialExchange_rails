@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220062535) do
+ActiveRecord::Schema.define(version: 20170226185955) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,16 @@ ActiveRecord::Schema.define(version: 20170220062535) do
   add_index "commitments", ["charity_offer_id"], name: "index_commitments_on_charity_offer_id", using: :btree
   add_index "commitments", ["individual_id"], name: "index_commitments_on_individual_id", using: :btree
 
+  create_table "individual_offers", force: :cascade do |t|
+    t.integer  "individual_id"
+    t.integer  "charity_offer_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "individual_offers", ["charity_offer_id"], name: "index_individual_offers_on_charity_offer_id", using: :btree
+  add_index "individual_offers", ["individual_id"], name: "index_individual_offers_on_individual_id", using: :btree
+
   create_table "individuals", force: :cascade do |t|
     t.string   "source",     limit: 3
     t.string   "sourceID"
@@ -95,4 +105,6 @@ ActiveRecord::Schema.define(version: 20170220062535) do
   add_foreign_key "commitments", "business_counter_offers"
   add_foreign_key "commitments", "charity_offers"
   add_foreign_key "commitments", "individuals"
+  add_foreign_key "individual_offers", "charity_offers"
+  add_foreign_key "individual_offers", "individuals"
 end

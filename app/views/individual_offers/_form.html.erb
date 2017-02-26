@@ -1,0 +1,25 @@
+<%= form_for(@individual_offer) do |f| %>
+  <% if @individual_offer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@individual_offer.errors.count, "error") %> prohibited this individual_offer from being saved:</h2>
+
+      <ul>
+      <% @individual_offer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :individual_id %><br>
+    <%= f.text_field :individual_id %>
+  </div>
+  <div class="field">
+    <%= f.label :charity_offer_id %><br>
+    <%= f.text_field :charity_offer_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
