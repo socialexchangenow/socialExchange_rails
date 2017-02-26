@@ -36,7 +36,7 @@ class ChatfuelController < ApplicationController
         user_status: "firsttimer"
       }
     }
-    response[ :set_attributes ][ :user_status ] == "member" unless i.nil?
+    response[ :set_attributes ][ :user_status ] = "member" unless i.nil?
 
     puts "chatfuel: getindividualhook: response=#{response.inspect}"
     render json: response
