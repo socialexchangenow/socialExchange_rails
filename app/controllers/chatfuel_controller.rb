@@ -212,6 +212,59 @@ class ChatfuelController < ApplicationController
     render json: response
   end
 
+  def reviewindividualoffershook
+    puts "chatfuel: reviewindividualoffershook: params=#{params.inspect}"
+
+    maxCards = 9 # for face book
+    response = {
+      messages: [
+        {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: []
+            }
+          }
+        }
+      ]
+    }
+
+    begin
+      i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] ).first
+      offers = IndividualOffer.where( individual_id: i.id ).to_a
+      cards = []
+      elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
+      (0..[offers.length-1, maxCards-1].min).each do |i|
+        co = CharityOffer.where( id: offer[i].charity_offer_id ).first
+        c = co.charity
+        element = {
+          title: "#{c.name}: #{co.shortDescription}",
+          subtitle: "#{co.longDescription}",
+          image_url: nil,
+          buttons: [
+            {
+              type: "show_block",
+              title: "Remove",
+              block_name: "Unpick charity offer",
+              set_attributes: {
+                current_charity_offer: "#{co.id}",
+              }
+            },
+          ]
+        }
+        elements << element
+      end
+    rescue Exception => e
+      response = {}
+      puts "chatfuel: reviewindividualoffershook: Exception: e=#{e.message}"
+      puts e.backtrace.join( "\n")
+    end
+
+    puts "chatfuel: reviewindividualoffershook: response=#{response.inspect}"
+    render json: response
+  end
+
   private
 
 end

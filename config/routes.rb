@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   match 'chatfuel/getcharitieshook', to: 'chatfuel#getcharitieshook', :via => [:get, :post], as: 'chatfuel_getcharitieshook'
   match 'chatfuel/getcharityoffershook', to: 'chatfuel#getcharityoffershook', :via => [:get, :post], as: 'chatfuel_getcharityoffershook'
   match 'chatfuel/individualofferhook', to: 'chatfuel#individualofferhook', :via => [:get, :post], as: 'chatfuel_individualofferhook'
+  match 'chatfuel/reviewindividualoffershook', to: 'chatfuel#reviewindividualoffershook', :via => [:get, :post], as: 'chatfuel_reviewindividualoffershook'
 
   match 'motionai/globalhook', to: 'motionai#globalhook', :via => [:get, :post], as: 'motionai_globalhook'
   match 'motionai/bootstraphook', to: 'motionai#bootstraphook', :via => [:get, :post], as: 'motionai_bootstraphook'
