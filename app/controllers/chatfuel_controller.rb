@@ -30,16 +30,22 @@ class ChatfuelController < ApplicationController
 
   def getindividualhook
     puts "chatfuel: getindividualhook: params=#{params.inspect}"
-    i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] )
-    response = {
-      "set_attributes": {
-        "user_status": "firsttimer"
-      },
-      "messages": [
-        { "text": "Hello {{fb_first_name}}" }
-      ]
-    }
-    response[ "set_attributes" ][ "user_status" ] = "member" unless i.nil?
+
+    begin
+      i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] )
+      response = {
+        "set_attributes": {
+          "user_status": "firsttimer"
+        },
+        "messages": [
+          { "text": "Hello {{fb_first_name}}" }
+        ]
+      }
+
+      response[ "set_attributes" ][ "user_status" ] = "member" unless i.nil?
+    rescue Exception => e
+      puts "Exception: e=#{e.message}"
+    end
 
     puts "chatfuel: getindividualhook: response=#{response.inspect}"
     render json: response
