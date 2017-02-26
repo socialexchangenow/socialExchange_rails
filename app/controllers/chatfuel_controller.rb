@@ -72,7 +72,8 @@ class ChatfuelController < ApplicationController
 
     begin
       charities = Charity.all.to_a
-      numCards = charities.length / 3 + 1
+      numCards = charities.length / 3
+      numCards += 1 if (charities.length % 3 ) > 0
       cards = []
       elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
       (0..numCards-1).each do |i|
@@ -288,7 +289,8 @@ class ChatfuelController < ApplicationController
 
     begin
       businesses = Business.all.to_a
-      numCards = businesses.length / 3 + 1
+      numCards = businesses.length / 3
+      numCards += 1 if (businesses.length % 3 ) > 0
       cards = []
       elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
       (0..numCards-1).each do |i|
