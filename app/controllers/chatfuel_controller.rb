@@ -6,10 +6,10 @@ class ChatfuelController < ApplicationController
     i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] )
     if i.nil?
       i = Individual.create( {
-        source: params[ "source" ],
-        sourceID: params[ "sourceID" ]
-        firstName: params[ "fb_first_name" ]
-        lastName: params[ "fb_last_name" ]
+        source: params[ "source" ],,
+        sourceID: params[ "sourceID" ],
+        firstName: params[ "fb_first_name" ],
+        lastName: params[ "fb_last_name" ],
       } )
     else
       i.firstName = params[ "fb_first_name" ]
