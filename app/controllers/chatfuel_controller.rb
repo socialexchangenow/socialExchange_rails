@@ -193,7 +193,7 @@ class ChatfuelController < ApplicationController
                 buttons: [
                   {
                     "type": "show_block",
-                    "block_name": "Maion Menu",
+                    "block_name": "Main Menu",
                     "title": "Back to Main Menu"
                   }
                 ]
