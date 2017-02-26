@@ -88,9 +88,9 @@ class ChatfuelController < ApplicationController
                 type: "show_block",
                 title: "#{charities[j].name}",
                 block_name: "Select a charity offer",
-		set_attributes: {
+                set_attributes: {
                   current_charity: "#{charities[j].id}",
-		}
+                }
               }
             end
         }
@@ -103,6 +103,66 @@ class ChatfuelController < ApplicationController
     end
 
     puts "chatfuel: getcharitieshook: response=#{response.inspect}"
+    render json: response
+  end
+
+  def getcharityoffershook
+    puts "chatfuel: getcharityoffershook: params=#{params.inspect}"
+
+    maxCards = 9 # for face book
+    charity_id = params[ "charity_id" ]
+    response = {
+      messages: [
+        {
+          attachment: {
+            type: "template",
+            payload: {
+              template_type: "generic",
+              elements: []
+            }
+          }
+        }
+      ]
+    }
+
+    begin
+      offers = CharityOffer.where( charity_id: charity_id ).to_a
+      numCards = offers.length / 3 + 1
+      cards = []
+      elements = response[ :messages ][0][ :attachment ][ :payload ][ :elements ]
+      (0..[numCards-1, maxCards-1].min).each do |i|
+        element = {
+          title: "#{offers[i].shortDescription}",
+          subtitle: "#{offers[i].longDescription}",
+          image_url: nil,
+          buttons: [
+            {
+              type: "show_block",
+              title: "Select",
+              block_name: "Pick charity offer",
+              set_attributes: {
+                current_charity_offer: "#{offers[i].id}",
+              }
+            },
+            {
+              type: "show_block",
+              title: "Remove",
+              block_name: "Unpick charity offer",
+              set_attributes: {
+                current_charity_offer: "#{offers[i].id}",
+              }
+            },
+          ]
+        }
+        elements << element
+      end
+    rescue Exception => e
+      response = {}
+      puts "Exception: e=#{e.message}"
+      puts e.backtrace.join( "\n")
+    end
+
+    puts "chatfuel: getcharityoffershook: response=#{response.inspect}"
     render json: response
   end
 
