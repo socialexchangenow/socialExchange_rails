@@ -256,14 +256,10 @@ class ChatfuelController < ApplicationController
         elements << element
       end
 
-      elements = response[ :messages ][0][ :attachment ] =
-      {
-        type: "template",
-        payload: {
-          template_type: "button",
-          text: "You do not have any offers to review",
-        }
-      } if offers.length == 0
+      elements = response[ :messages ] =
+      [ {
+        text: "You do not have any offers to review",
+      } ] if offers.length == 0
 
     rescue Exception => e
       response = {}
