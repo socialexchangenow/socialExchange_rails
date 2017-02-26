@@ -21,7 +21,7 @@ class ChatfuelController < ApplicationController
         i.save
       end
     rescue Exception => e
-      logger.error "Exception: e=#{e.message}"
+      puts "Exception: e=#{e.message}"
     end
  
     puts "chatfuel: pushindividualhook: response=#{response.inspect}"
