@@ -171,7 +171,7 @@ class ChatfuelController < ApplicationController
     response = {}
 
     begin
-      bRemove = params[ "action" ] == "remove"
+      bRemove = params[ "act" ] == "remove"
       i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] ).first
       co = CharityOffer.where( id: params[ "charity_offer_id" ] ).first
       io = IndividualOffer.where( individual_id: i.id, charity_offer_id: co.id ).first
