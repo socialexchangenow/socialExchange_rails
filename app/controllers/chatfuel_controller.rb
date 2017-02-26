@@ -42,7 +42,7 @@ class ChatfuelController < ApplicationController
     }
 
     begin
-      i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] )
+      i = Individual.where( source: params[ "source" ], sourceID: params[ "sourceID" ] ).first
       response[ :set_attributes ][ :user_status ] = "member" unless i.nil?
     rescue Exception => e
       puts "Exception: e=#{e.message}"
