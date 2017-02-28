@@ -10,10 +10,13 @@ class BusinessCounterOffersController < ApplicationController
   # GET /business_counter_offers/1
   # GET /business_counter_offers/1.json
   def show
+    @businesses = Business.all.to_a
   end
 
   # GET /business_counter_offers/new
   def new
+    #instance variable on the controller uses the @ sign
+    @businesses = Business.all.to_a
     @business_counter_offer = BusinessCounterOffer.new
   end
 
