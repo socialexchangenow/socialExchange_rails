@@ -13,6 +13,8 @@
 #
 
 class CharityOffer < ActiveRecord::Base
+  
+  validates :shortCode, length: { maximum: 6 }
   belongs_to :charity
   has_many :business_counter_offers, :dependent => :destroy
   has_many :commitments, :dependent => :destroy

@@ -10,6 +10,8 @@ class BusinessesController < ApplicationController
   # GET /businesses/1
   # GET /businesses/1.json
   def show
+  # commented out because not working  @businesses = Business.all.to_a
+  # creates an array filled with Business select
   end
 
   # GET /businesses/new

@@ -1,8 +1,15 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @charity.name %>
+  <h1>
+
+    <%= @charity.name %>
+  </h1>
+</p>
+
+<p>
+  <strong>ID:</strong>
+  <%= @charity.id %>
 </p>
 
 <p>
@@ -30,5 +37,49 @@
   <%= @charity.contactPhone %>
 </p>
 
-<%= link_to 'Edit', edit_charity_path(@charity) %> |
-<%= link_to 'Back', charities_path %>
+<div class="nav_bar">
+  <ul>
+    <li><%= link_to 'Create New Charity Offer', new_charity_offer_path %></li>
+    <li><%= link_to 'Edit Current Charity', edit_charity_path(@charity) %></li>
+    <li><%= link_to 'Back', charities_path %></li>
+  </ul>
+</div>
+
+<div  class="charity_offer_container">
+  <br>
+  <h2>Charity Offers</h2>
+  <!--instance variable, that is an array of charites-->
+  
+  <% @charity.charity_offers.each do |charity_offer| %>
+    <p>_________________________________________________________________</p>
+      <tr>
+        <p>
+          <td>
+            <strong>Short Code: </strong><%= charity_offer.shortCode %>
+          </td>
+        </p>
+        <p>
+          <td>
+            <strong>Short Description: </strong><%= charity_offer.shortDescription %>
+          </td>
+        </p>
+        <p>
+          <td>
+            <strong>Long Description</strong><%= charity_offer.longDescription %>
+          </td>
+        </p>
+        <p>
+          <td>
+            <strong>Amount: </strong><%= charity_offer.amount %>
+          </td>
+        </p>
+        <div class="nav_bar">
+          <ul>
+            <li><%= link_to 'Show', charity_offer %></li>
+            <li><%= link_to 'Edit', edit_charity_offer_path(charity_offer) %></li>
+            <li><%= link_to 'Destroy', charity_offer, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+          </ul
+        </div>
+      </tr>
+  <% end %>
+</div>

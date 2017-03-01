@@ -15,4 +15,5 @@
 
 class Charity < ActiveRecord::Base
   has_many :charity_offers, :dependent => :destroy
+  validates :shortCode, length: { maximum: 6 }
 end

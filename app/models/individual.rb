@@ -15,4 +15,5 @@
 class Individual < ActiveRecord::Base
   has_many :commitments, :dependent => :destroy
   has_many :individual_offers, :dependent => :destroy
+  validates :source, length: { maximum: 3 }
 end

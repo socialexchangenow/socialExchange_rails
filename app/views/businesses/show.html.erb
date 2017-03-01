@@ -29,6 +29,40 @@
   <strong>Contactphone:</strong>
   <%= @business.contactPhone %>
 </p>
-
-<%= link_to 'Edit', edit_business_path(@business) %> |
+<%= link_to 'Edit Business', edit_business_path(@business) %> |
 <%= link_to 'Back', businesses_path %>
+<br>
+<!--LIST COUNTER OFFERS-->
+<h2>Business counter offers</h2>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Business</th>
+      <th>Charity offer</th>
+      <th>Shortcode</th>
+      <th>Shortdescription</th>
+      <th>Longdescription</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @business.business_counter_offers.each do |business_counter_offer| %>
+      <tr>
+        <td><%= business_counter_offer.business.name %></td>
+        <td><%= business_counter_offer.charity_offer.shortDescription %></td>
+        <td><%= business_counter_offer.shortCode %></td>
+        <td><%= business_counter_offer.shortDescription %></td>
+        <td><%= business_counter_offer.longDescription %></td>
+        <td><%= business_counter_offer.amount %></td>
+        <td><%= link_to 'Show', business_counter_offer %></td>
+        <td><%= link_to 'Edit', edit_business_counter_offer_path(business_counter_offer) %></td>
+        <td><%= link_to 'Destroy', business_counter_offer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Business counter offer', new_business_counter_offer_path %>

@@ -1,10 +1,10 @@
-<%= form_for(@charity_offer) do |f| %>
-  <% if @charity_offer.errors.any? %>
+<%= form_for(@business_counter_offer) do |f| %>
+  <% if @business_counter_offer.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@charity_offer.errors.count, "error") %> prohibited this charity_offer from being saved:</h2>
+      <h2><%= pluralize(@business_counter_offer.errors.count, "error") %> prohibited this business_counter_offer from being saved:</h2>
 
       <ul>
-      <% @charity_offer.errors.full_messages.each do |message| %>
+      <% @business_counter_offer.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,9 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :charity_id %><br>
-    <%= f.text_field :charity_id %>
-
+    <%= f.select(:business_id) do %>
+        <% @businesses.each do |b| -%>
+          <%= content_tag(:option, b.name, value: b.id) %>
+        <% end %>
+    <% end %>
+  </div>
+  <div class="field">
+    <%= f.label :charity_offer_id %><br>
+    <%= f.text_field :charity_offer_id %>
   </div>
   <div class="field">
     <%= f.label :shortCode %><br>

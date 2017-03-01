@@ -15,4 +15,5 @@
 
 class Business < ActiveRecord::Base
   has_many :business_counter_offers, :dependent => :destroy
+  validates :shortCode, length: { maximum: 6 }
 end

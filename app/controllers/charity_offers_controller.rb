@@ -15,6 +15,7 @@ class CharityOffersController < ApplicationController
   # GET /charity_offers/new
   def new
     @charity_offer = CharityOffer.new
+    @charities = Charity.all.to_a
   end
 
   # GET /charity_offers/1/edit

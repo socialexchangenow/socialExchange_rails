@@ -14,6 +14,7 @@
 #
 
 class BusinessCounterOffer < ActiveRecord::Base
+  validates :shortCode, length: { maximum: 6 }
   belongs_to :business
   belongs_to :charity_offer
   has_many :commitments, :dependent => :destroy
