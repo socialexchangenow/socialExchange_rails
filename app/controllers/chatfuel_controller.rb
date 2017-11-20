@@ -306,9 +306,10 @@ class ChatfuelController < ApplicationController
               {
                 type: "show_block",
                 title: "#{businesses[j].name}",
-                block_name: "View a business",
+                block_name: "Hub",
                 set_attributes: {
                   current_business: "#{businesses[j].id}",
+                  current_business_name: "#{businesses[j].name}"
                 }
               }
             end
