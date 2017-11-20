@@ -23,7 +23,7 @@ class IndividualOffersController < ApplicationController
 
   # POST /individual_offers
   # POST /individual_offers.json
-  def create
+  def create 
     @individual_offer = IndividualOffer.new(individual_offer_params)
 
     respond_to do |format|
