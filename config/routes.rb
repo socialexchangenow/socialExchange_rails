@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :businesses
   resources :charities
   resources :individuals
-
+ 
   root 'welcome#index'
 
   match 'chatfuel/pushindividualhook', to: 'chatfuel#pushindividualhook', :via => [:get, :post], as: 'chatfuel_pushindividualhook'
