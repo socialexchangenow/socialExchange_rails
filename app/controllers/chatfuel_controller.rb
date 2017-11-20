@@ -91,6 +91,7 @@ class ChatfuelController < ApplicationController
                 block_name: "Select a charity offer",
                 set_attributes: {
                   current_charity: "#{charities[j].id}",
+                  current_charity_name: "#{charities[j].name}"
                 }
               }
             end
